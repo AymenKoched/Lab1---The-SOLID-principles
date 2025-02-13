@@ -1,0 +1,34 @@
+@startuml
+title LSP Compliant Duck Example
+
+interface Duck {
+  +quack(): void
+  +swim(): void
+}
+
+class RealDuck {
+  +quack(): void
+  +swim(): void
+}
+
+class ElectronicDuck {
+  -isOn: boolean
+  +ElectronicDuck()
+  +turnOn(): void
+  +turnOff(): void
+  +quack(): void
+  +swim(): void
+}
+
+class Pool {
+  +run(): void
+  -quack(ducks: Duck...): void
+  -swim(ducks: Duck...): void
+  +main(args: String[]): void
+}
+
+Duck <|.. RealDuck
+Duck <|.. ElectronicDuck
+Pool ..> Duck
+
+@enduml
