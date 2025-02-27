@@ -1,0 +1,32 @@
+@startuml
+    interface Database {
+        + write(inputString : String) : int
+    }
+
+    interface Encoding {
+        + encodeWithFiles() : void
+        + encodeBasedOnNetworkAndDatabase() : void
+    }
+
+    class EncodingModule {
+        - database : Database
+        + EncodingModule(database : Database)
+        + encodeWithFiles() : void
+        + encodeBasedOnNetworkAndDatabase() : void
+    }
+
+    class MyDatabase  {
+        - data : Map<Integer, String>
+        - count : int
+        + write(inputString : String) : int
+    }
+
+    class EncodingModuleClient {
+        + main(args : String[]) : void
+    }
+
+    EncodingModuleClient --> EncodingModule
+    MyDatabase ..|> Database
+    EncodingModule --> Database
+    EncodingModule ..|> Encoding
+@enduml

@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Base64;
 
-public class EncodingModule
+ class EncodingModule
 {
     public void encodeWithFiles() throws IOException
     {
