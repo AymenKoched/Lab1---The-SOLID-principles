@@ -10,7 +10,4 @@ public interface Door
 
     void close();
 
-    void timeOutCallback();
-
-    void proximityCallback();
 }
