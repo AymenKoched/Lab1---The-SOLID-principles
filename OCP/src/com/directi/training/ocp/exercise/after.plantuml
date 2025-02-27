@@ -1,0 +1,37 @@
+@startuml
+
+class ResourceType {
+    TIME_SLOT
+    SPACE_SLOT
+}
+
+enum ResourceType
+
+interface ResourceHandler {
+    + allocate(): int
+    + free(resourceId: int): void
+    + findFreeSlot(): int
+    + markSlotBusy(resourceId: int): void
+    + markSlotFree(resourceId: int): void
+}
+
+class ResourceAllocator {
+    - INVALID_RESOURCE_ID: int = -1
+    - resourceHandlers: Map<ResourceType, ResourceHandler>
+    + ResourceAllocator()
+    + allocate(resourceType: ResourceType): int
+    + free(resourceType: ResourceType, resourceId: int): void
+}
+
+class SpaceSlotHandler {
+}
+
+class TimeSlotHandler {
+}
+
+ResourceAllocator --> ResourceType
+ResourceAllocator o-- ResourceHandler
+ResourceHandler <|.. SpaceSlotHandler
+ResourceHandler <|.. TimeSlotHandler
+
+@enduml

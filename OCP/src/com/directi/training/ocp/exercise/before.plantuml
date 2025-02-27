@@ -1,0 +1,24 @@
+@startuml 
+
+class ResourceType {
+    TIME_SLOT
+    SPACE_SLOT
+}
+
+enum ResourceType
+
+class ResourceAllocator {
+    - INVALID_RESOURCE_ID: int = -1
+    + allocate(resourceType: ResourceType): int
+    + free(resourceType: ResourceType, resourceId: int): void
+    - markSpaceSlotFree(resourceId: int): void
+    - markTimeSlotFree(resourceId: int): void
+    - markSpaceSlotBusy(resourceId: int): void
+    - findFreeSpaceSlot(): int
+    - markTimeSlotBusy(resourceId: int): void
+    - findFreeTimeSlot(): int
+}
+
+ResourceAllocator --> ResourceType
+
+@enduml

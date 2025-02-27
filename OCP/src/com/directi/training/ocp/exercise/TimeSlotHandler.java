@@ -3,23 +3,26 @@ package com.directi.training.ocp.exercise;
 public class TimeSlotHandler implements ResourceHandler {
     @Override
     public int allocate() {
-        int resourceId = findFreeTimeSlot();
-        markTimeSlotBusy(resourceId);
+        int resourceId = findFreeSlot();
+        markSlotBusy(resourceId);
         return resourceId;
     }
     
     @Override
     public void free(int resourceId) {
-        markTimeSlotFree(resourceId);
+        markSlotFree(resourceId);
     }
     
-    private int findFreeTimeSlot() {
+    @Override
+    public int findFreeSlot() {
         return 0;
     }
     
-    private void markTimeSlotBusy(int resourceId) {
+    @Override
+    public void markSlotBusy(int resourceId) {
     }
     
-    private void markTimeSlotFree(int resourceId) {
+    @Override
+    public void markSlotFree(int resourceId) {
     }
 }
